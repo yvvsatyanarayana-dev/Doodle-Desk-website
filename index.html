@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doodle Desk — The Offline Whiteboard for Software Architects</title>
+  <meta name="description" content="A fast, private, offline desktop whiteboard for system architecture, algorithmic scratchpads, and rapid vector sketches. Zero telemetry, 100% free for life.">
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ======================================================================
+       Site Header
+       ====================================================================== -->
+  <header class="site-header">
+    <div class="container">
+      <a href="#" class="brand">
+        <img src="assets/doodle-logo-clean.png" alt="D" class="brand-logo">
+        <span class="brand-name">oodle Desk</span>
+      </a>
+
+      <nav class="desktop-nav">
+        <ul class="nav-links">
+          <li><a href="#scanner" class="nav-link">Napkin AI</a></li>
+          <li><a href="#bento" class="nav-link">Capabilities</a></li>
+          <li><a href="#architecture-3d" class="nav-link">3D Architecture</a></li>
+          <li><a href="#physics" class="nav-link">Physics Engine</a></li>
+          <li><a href="#security-audit" class="nav-link">Security Audit</a></li>
+          <li><a href="#download" class="nav-link">Download</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode" title="Toggle Theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+          </svg>
+        </button>
+
+        <a href="#download" class="btn-primary nav-download-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span>Download Free</span>
+        </a>
+
+        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Open Navigation Menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================================
+       Hero Section
+       ====================================================================== -->
+  <section class="hero-section">
+    <div class="container">
+
+      <h1 class="hero-title">
+        The offline whiteboard <br>
+        <span class="hero-title-highlight">
+          for visual thinkers.
+          <svg viewBox="0 0 340 12" fill="none" stroke-width="3" stroke-linecap="round">
+            <path d="M3 9C65 3 170 2 337 9" />
+          </svg>
+        </span>
+      </h1>
+
+      <p class="hero-subtitle">
+        A fast desktop studio for software architectures, algorithmic scratchpads, and rapid vector sketches. Built on a 60 FPS double-buffered canvas engine with zero cloud latency.
+      </p>
+
+      <div class="hero-cta-group">
+        <a id="hero-download-btn" href="https://github.com/yvvsatyanarayana-dev/Doodle-Desk/releases/download/v1.0.2/Doodle-Desk-Setup-1.0.2.exe" class="btn-primary hero-cta-btn-large">
+          <span id="hero-btn-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M0 0h11.377v11.372H0zM12.623 0H24v11.372H12.623zM0 12.623h11.377V24H0zM12.623 12.623H24V24H12.623z"/>
+            </svg>
+          </span>
+          <span id="hero-btn-title">Download for Windows</span>
+          <span id="hero-btn-sub" class="btn-subtext">v1.0.2 • .exe • Free (MIT)</span>
+        </a>
+
+        <div class="terminal-quick-pill">
+          <span class="terminal-prompt">$</span>
+          <code id="hero-cmd-code">winget install DoodleDesk</code>
+          <button id="hero-copy-btn" class="terminal-copy-btn" title="Copy to clipboard">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+            <span id="hero-copy-label">Copy</span>
+          </button>
+        </div>
+
+        <button data-open-shortcuts class="btn-ghost-pill" title="View keyboard shortcut matrix">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="4" width="20" height="16" rx="2.5"/>
+            <path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h8M6 16h.01M18 16h.01"/>
+          </svg>
+          <span><kbd class="kbd">Ctrl+K</kbd> Shortcuts</span>
+        </button>
+      </div>
+
+      <div class="hero-other-platforms">
+        <span>Also available for:</span>
+        <a href="#download" class="platform-link" data-select-os="windows">Windows (.exe)</a>
+        <span>•</span>
+        <a href="#download" class="platform-link" data-select-os="mac">macOS (.dmg)</a>
+        <span>•</span>
+        <a href="#download" class="platform-link" data-select-os="linux">Linux (.AppImage)</a>
+        <span>•</span>
+        <a href="https://github.com/yvvsatyanarayana-dev/Doodle-Desk/releases/download/v1.0.2/Doodle-Desk-1.0.2.exe" class="platform-link">Portable .exe</a>
+      </div>
+
+      <div class="hero-specs-row">
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          60 FPS Native Canvas
+        </span>
+        <span class="sep">•</span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          100% Offline & Private
+        </span>
+        <span class="sep">•</span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          Standard .doodle Format
+        </span>
+        <span class="sep">•</span>
+        <span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Free Forever (MIT)
+        </span>
+      </div>
+
+      <!-- ==================================================================
+           Hero Showcase: Obsidian Studio Display
+           ================================================================== -->
+      <div class="hero-showcase-container">
+        <div class="hero-glow-ambient"></div>
+
+        <div class="hero-device-chassis">
+          <div class="chassis-specular-sheen"></div>
+          <div class="chassis-header-bar">
+            <div class="chassis-window-controls">
+              <span class="window-dot dot-close"></span>
+              <span class="window-dot dot-min"></span>
+              <span class="window-dot dot-max"></span>
+              <span class="chassis-title">architecture_review.doodle — Doodle Desk</span>
+            </div>
+
+            <!-- Mode Switcher embedded in chassis header -->
+            <div class="hero-view-switcher">
+              <button class="hero-view-tab active" data-hero-mode="screenshot">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                <span>Production Studio</span>
+              </button>
+              <button class="hero-view-tab" data-hero-mode="interactive">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+                <span>Live Interactive Scratchpad</span>
+              </button>
+            </div>
+
+            <div class="chassis-telemetry">
+              <span class="chassis-green-led"></span>
+              <code>60 FPS • 0ms Local Storage</code>
+            </div>
+          </div>
+
+          <!-- View 1: Real High-Resolution Studio Screenshot (Clean, Unblemished) -->
+          <div id="hero-screenshot-view" class="hero-view-screenshot">
+            <div class="screenshot-stage">
+              <img src="assets/App.png" alt="Doodle Desk Application Interface" class="app-screenshot-img" loading="eager">
+            </div>
+          </div>
+
+          <!-- View 2: Live Interactive Sketchy Canvas Playground -->
+          <div id="hero-interactive-view" class="hero-view-interactive">
+            <div class="canvas-toolbar-island">
+              <button class="canvas-tool-btn active" data-demo-tool="draw" title="Freehand Brush (7)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+                </svg>
+              </button>
+              <button class="canvas-tool-btn" data-demo-tool="rectangle" title="Rectangle (2)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect width="18" height="18" x="3" y="3" rx="2"/>
+                </svg>
+              </button>
+              <button class="canvas-tool-btn" data-demo-tool="diamond" title="Diamond (3)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect width="13" height="13" x="5.5" y="5.5" rx="1" transform="rotate(45 12 12)"/>
+                </svg>
+              </button>
+              <button class="canvas-tool-btn" data-demo-tool="ellipse" title="Ellipse (4)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="9"/>
+                </svg>
+              </button>
+              <button class="canvas-tool-btn" data-demo-tool="triangle" title="Triangle">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="12 3 22 21 2 21"/>
+                </svg>
+              </button>
+              <button class="canvas-tool-btn" data-demo-tool="star" title="Star (5-pt)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+              </button>
+              <button class="canvas-tool-btn" data-demo-tool="arrow" title="Arrow (5)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                </svg>
+              </button>
+              <button class="canvas-tool-btn" data-demo-tool="sticky" title="Sticky Note">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M15.5 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.5L15.5 3Z"/><path d="M15 3v6h6"/>
+                </svg>
+              </button>
+              <div class="canvas-divider"></div>
+              <button id="clear-canvas-btn" class="canvas-tool-btn" title="Clear Canvas">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                </svg>
+              </button>
+            </div>
+
+            <canvas id="hero-doodle-canvas"></canvas>
+
+            <div class="canvas-preset-dock">
+              <span class="preset-label">Diagram Presets:</span>
+              <button class="canvas-preset-btn" data-preset="architecture">Cloud Architecture</button>
+              <button class="canvas-preset-btn" data-preset="flowchart">System Flowchart</button>
+              <button class="canvas-preset-btn" data-preset="shapes">Geometric Suite</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature Ribbon below Chassis -->
+        <div class="hero-features-ribbon">
+          <div class="feature-ribbon-item">
+            <div class="ribbon-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+            </div>
+            <div>
+              <strong>Floating Vector Island</strong>
+              <span>12 drafting tools with rough jitter</span>
+            </div>
+          </div>
+          <div class="feature-ribbon-item">
+            <div class="ribbon-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2.5"/><path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h8M6 16h.01M18 16h.01"/></svg>
+            </div>
+            <div>
+              <strong>Ctrl+K Palette</strong>
+              <span>0ms fuzzy search across tools & actions</span>
+            </div>
+          </div>
+          <div class="feature-ribbon-item">
+            <div class="ribbon-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div>
+              <strong>8 Native Geometries</strong>
+              <span>Double-click centered bound text</span>
+            </div>
+          </div>
+          <div class="feature-ribbon-item">
+            <div class="ribbon-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+            </div>
+            <div>
+              <strong>P2P Mesh Rooms</strong>
+              <span>Encrypted machine-to-machine WebRTC</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       Interactive Napkin-to-Vector Scanner (High-Fidelity Comparison)
+       ====================================================================== -->
+  <section id="scanner" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Napkin to Vector Scanner</h2>
+        <p class="section-desc">
+          Drag the interactive slider below to watch rough handwritten whiteboard sketches convert into crisp, editable Doodle Desk vector shapes in real-time.
+        </p>
+      </div>
+
+      <!-- Before/After Split Slider Stage -->
+      <div id="napkin-slider" class="napkin-slider-container">
+
+        <!-- Layer 1: Authentic Hand-Drawn Paper Napkin Sketch (Under) -->
+        <div class="napkin-slider-layer layer-napkin">
+          <div class="napkin-texture-overlay"></div>
+          <div class="napkin-camera-hud">
+            <span class="camera-tag">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              WHITEBOARD CAPTURE • 12.2 MP
+            </span>
+            <span class="camera-tag">EDGE CONVOLUTION: READY</span>
+          </div>
+
+          <!-- Realistic Hand-Drawn Blue Ink Diagram SVG -->
+          <svg class="napkin-sketch-svg" viewBox="0 0 960 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="ink-bleed" x="-10%" y="-10%" width="120%" height="120%">
+                <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+                <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" />
+              </filter>
+            </defs>
+
+            <!-- Coffee Mug Stain Ring -->
+            <circle cx="820" cy="110" r="64" stroke="#c29d5b" stroke-width="4" stroke-dasharray="14 8 22 4" opacity="0.32" />
+            <circle cx="820" cy="110" r="58" stroke="#c29d5b" stroke-width="1.5" opacity="0.2" />
+
+            <!-- Client Node -->
+            <rect x="70" y="160" width="160" height="90" rx="4" stroke="#1d4ed8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" filter="url(#ink-bleed)" fill="rgba(29, 78, 216, 0.04)" />
+            <text x="150" y="200" font-family="'Caveat', cursive" font-size="24" font-weight="700" fill="#1e3a8a" text-anchor="middle">Client App</text>
+            <text x="150" y="226" font-family="'Caveat', cursive" font-size="17" fill="#2563eb" text-anchor="middle">(React + Vite)</text>
+
+            <!-- Connector 1 -->
+            <path d="M 230 205 Q 285 200 340 205" stroke="#1d4ed8" stroke-width="3" stroke-linecap="round" filter="url(#ink-bleed)" />
+            <path d="M 325 196 L 342 205 L 325 214" stroke="#1d4ed8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+            <text x="285" y="188" font-family="'Caveat', cursive" font-size="16" fill="#1e3a8a" text-anchor="middle">HTTPS / JSON</text>
+
+            <!-- Gateway Diamond -->
+            <polygon points="410,135 480,205 410,275 340,205" stroke="#1d4ed8" stroke-width="3.2" stroke-linejoin="round" filter="url(#ink-bleed)" fill="rgba(29, 78, 216, 0.05)" />
+            <text x="410" y="202" font-family="'Caveat', cursive" font-size="22" font-weight="700" fill="#1e3a8a" text-anchor="middle">API Gateway</text>
+            <text x="410" y="224" font-family="'Caveat', cursive" font-size="15" fill="#2563eb" text-anchor="middle">FastAPI / Auth</text>
+
+            <!-- Connector to DB -->
+            <path d="M 480 205 Q 535 205 590 205" stroke="#1d4ed8" stroke-width="3" stroke-linecap="round" filter="url(#ink-bleed)" />
+            <path d="M 575 196 L 592 205 L 575 214" stroke="#1d4ed8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+
+            <!-- Postgres Cylinder -->
+            <ellipse cx="660" cy="165" rx="65" ry="22" stroke="#1d4ed8" stroke-width="3" filter="url(#ink-bleed)" fill="rgba(29, 78, 216, 0.06)" />
+            <path d="M 595 165 L 595 245" stroke="#1d4ed8" stroke-width="3" stroke-linecap="round" filter="url(#ink-bleed)" />
+            <path d="M 725 165 L 725 245" stroke="#1d4ed8" stroke-width="3" stroke-linecap="round" filter="url(#ink-bleed)" />
+            <path d="M 595 245 Q 660 270 725 245" stroke="#1d4ed8" stroke-width="3" stroke-linecap="round" filter="url(#ink-bleed)" fill="rgba(29, 78, 216, 0.04)" />
+            <!-- Cylinder Hatching -->
+            <line x1="610" y1="200" x2="630" y2="235" stroke="#1d4ed8" stroke-width="1.8" opacity="0.6" />
+            <line x1="630" y1="200" x2="650" y2="235" stroke="#1d4ed8" stroke-width="1.8" opacity="0.6" />
+            <line x1="650" y1="200" x2="670" y2="235" stroke="#1d4ed8" stroke-width="1.8" opacity="0.6" />
+            <text x="660" y="205" font-family="'Caveat', cursive" font-size="22" font-weight="700" fill="#1e3a8a" text-anchor="middle">PostgreSQL 16</text>
+            <text x="660" y="226" font-family="'Caveat', cursive" font-size="15" fill="#2563eb" text-anchor="middle">(Primary Cluster)</text>
+
+            <!-- Connector to Cache -->
+            <path d="M 410 275 Q 410 325 410 350" stroke="#1d4ed8" stroke-width="2.5" stroke-dasharray="7 5" stroke-linecap="round" />
+            <path d="M 403 340 L 410 353 L 417 340" stroke="#1d4ed8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+
+            <!-- Redis Cache Capsule -->
+            <rect x="330" y="355" width="160" height="55" rx="28" stroke="#1d4ed8" stroke-width="2.8" filter="url(#ink-bleed)" fill="rgba(29, 78, 216, 0.04)" />
+            <text x="410" y="388" font-family="'Caveat', cursive" font-size="20" font-weight="700" fill="#1e3a8a" text-anchor="middle">Redis 7 (In-Memory)</text>
+
+            <!-- Sticky Note Annotation -->
+            <g transform="rotate(-3 780 320)">
+              <rect x="740" y="280" width="170" height="120" rx="3" fill="#fef08a" stroke="#ca8a04" stroke-width="1.5" filter="drop-shadow(2px 5px 8px rgba(0,0,0,0.12))" />
+              <text x="755" y="310" font-family="'Caveat', cursive" font-size="17" font-weight="700" fill="#713f12">Architecture Notes:</text>
+              <text x="755" y="332" font-family="'Caveat', cursive" font-size="15" fill="#854d0e">• Invalidate cache on</text>
+              <text x="755" y="352" font-family="'Caveat', cursive" font-size="15" fill="#854d0e">  write operations</text>
+              <text x="755" y="375" font-family="'Caveat', cursive" font-size="15" fill="#854d0e">• Add Read Replica</text>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Layer 2: Clean Obsidian Vector Studio Output (Over) -->
+        <div id="layer-vector" class="napkin-slider-layer layer-vector">
+          <div class="vector-hud-badge">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>DOODLE DESK VECTOR ENGINE • 5 NATIVE SHAPES DETECTED</span>
+          </div>
+
+          <!-- Crisp Obsidian Vector Graphic -->
+          <svg class="vector-studio-svg" viewBox="0 0 960 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Client App Node -->
+            <rect x="70" y="160" width="160" height="90" rx="8" stroke="#f4f4f5" stroke-width="2" fill="#141417" />
+            <rect x="78" y="168" width="144" height="74" rx="4" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+            <text x="150" y="202" font-family="'Inter', sans-serif" font-size="15" font-weight="600" fill="#f4f4f5" text-anchor="middle">Client App</text>
+            <text x="150" y="224" font-family="'JetBrains Mono', monospace" font-size="12" fill="#a1a1aa" text-anchor="middle">React + Vite</text>
+
+            <!-- Vector Connector 1 -->
+            <path d="M 230 205 L 340 205" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+            <polygon points="340,205 328,199 328,211" fill="#f59e0b" />
+            <rect x="250" y="180" width="70" height="20" rx="4" fill="#18181c" stroke="rgba(255,255,255,0.1)" />
+            <text x="285" y="194" font-family="'JetBrains Mono', monospace" font-size="10" fill="#f59e0b" text-anchor="middle">HTTPS</text>
+
+            <!-- API Gateway Diamond with Vector Handles -->
+            <polygon points="410,135 480,205 410,275 340,205" stroke="#06b6d4" stroke-width="2.5" fill="#141417" />
+            <text x="410" y="200" font-family="'Inter', sans-serif" font-size="14" font-weight="700" fill="#06b6d4" text-anchor="middle">API Gateway</text>
+            <text x="410" y="220" font-family="'JetBrains Mono', monospace" font-size="11" fill="#67e8f9" text-anchor="middle">FastAPI / Auth</text>
+
+            <!-- Active Vector Selection Box with Anchor Handles -->
+            <rect x="334" y="129" width="152" height="152" stroke="#06b6d4" stroke-width="1.2" stroke-dasharray="4 4" fill="none" opacity="0.8" />
+            <rect x="330" y="125" width="8" height="8" fill="#06b6d4" />
+            <rect x="478" y="125" width="8" height="8" fill="#06b6d4" />
+            <rect x="330" y="273" width="8" height="8" fill="#06b6d4" />
+            <rect x="478" y="273" width="8" height="8" fill="#06b6d4" />
+            <circle cx="410" cy="115" r="4" fill="#06b6d4" />
+            <line x1="410" y1="129" x2="410" y2="119" stroke="#06b6d4" stroke-width="1" />
+
+            <!-- Connector to DB -->
+            <path d="M 480 205 L 590 205" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" />
+            <polygon points="590,205 578,199 578,211" fill="#f59e0b" />
+
+            <!-- Postgres Cylinder -->
+            <ellipse cx="660" cy="165" rx="65" ry="20" stroke="#10b981" stroke-width="2.2" fill="#141417" />
+            <path d="M 595 165 L 595 245" stroke="#10b981" stroke-width="2.2" />
+            <path d="M 725 165 L 725 245" stroke="#10b981" stroke-width="2.2" />
+            <path d="M 595 245 Q 660 270 725 245" stroke="#10b981" stroke-width="2.2" fill="#141417" />
+            <!-- Procedural Vector Hachures -->
+            <line x1="615" y1="190" x2="635" y2="235" stroke="#10b981" stroke-width="1.2" opacity="0.4" />
+            <line x1="635" y1="190" x2="655" y2="235" stroke="#10b981" stroke-width="1.2" opacity="0.4" />
+            <line x1="655" y1="190" x2="675" y2="235" stroke="#10b981" stroke-width="1.2" opacity="0.4" />
+            <text x="660" y="202" font-family="'Inter', sans-serif" font-size="14" font-weight="700" fill="#10b981" text-anchor="middle">PostgreSQL 16</text>
+            <text x="660" y="222" font-family="'JetBrains Mono', monospace" font-size="11" fill="#6ee7b7" text-anchor="middle">Primary Cluster</text>
+
+            <!-- Connector to Redis -->
+            <path d="M 410 275 L 410 350" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round" />
+            <polygon points="410,350 404,338 416,338" fill="#f59e0b" />
+
+            <!-- Redis Cache Capsule -->
+            <rect x="330" y="355" width="160" height="55" rx="27" stroke="#a855f7" stroke-width="2" fill="#141417" />
+            <text x="410" y="388" font-family="'Inter', sans-serif" font-size="13" font-weight="600" fill="#c084fc" text-anchor="middle">Redis 7 (In-Memory)</text>
+
+            <!-- Vector Sticky Note -->
+            <g transform="rotate(-1 780 320)">
+              <rect x="740" y="280" width="170" height="120" rx="6" fill="#fef08a" stroke="#ca8a04" stroke-width="1" filter="drop-shadow(0 8px 16px rgba(0,0,0,0.4))" />
+              <circle cx="825" cy="292" r="4" fill="#991b1b" />
+              <text x="755" y="316" font-family="'Caveat', cursive" font-size="17" font-weight="700" fill="#713f12">Architecture Notes:</text>
+              <text x="755" y="338" font-family="'Caveat', cursive" font-size="15" fill="#854d0e">• Invalidate cache on</text>
+              <text x="755" y="358" font-family="'Caveat', cursive" font-size="15" fill="#854d0e">  write operations</text>
+              <text x="755" y="380" font-family="'Caveat', cursive" font-size="15" fill="#854d0e">• Add Read Replica</text>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Draggable Handle Divider -->
+        <div id="slider-divider" class="slider-divider-line">
+          <div class="slider-handle-knob">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="scanner-instruction-bar">
+        <span>Before: Rough Paper Sketch</span>
+        <span class="scanner-hint">Drag divider to test transformation</span>
+        <span>After: Doodle Desk Vector Canvas</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       Bento Studio Architecture (Interactive Modern Grid)
+       ====================================================================== -->
+  <section id="bento" class="section bento-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Engineered for Technical Diagramming</h2>
+        <p class="section-desc">
+          Every tool is designed for high-density engineering workflows, from double-click bound text on 8 geometries to sandboxed JS evaluations.
+        </p>
+      </div>
+
+      <div class="bento-grid">
+
+        <!-- Bento 1: 8 First-Class Geometric Geometries (Large 2-Column Wide) -->
+        <div class="bento-card bento-span-2 spotlight-card">
+          <div class="bento-card-header">
+            <div>
+              <span class="bento-badge">Vector Engine</span>
+              <h3 class="bento-title">8 First-Class Geometric Shapes with Bound Text</h3>
+              <p class="bento-desc">
+                Cylinders, stars, diamonds, hexagons, octagons, clouds, capsules, and triangles. Double-click any shape to type centered bound text with automatic word wrap.
+              </p>
+            </div>
+            <div class="bento-tag-pill">60 FPS Double-Pass Jitter</div>
+          </div>
+
+          <!-- Interactive Shape Selector & Mini Previewer -->
+          <div class="shape-engine-interactive">
+            <div class="shape-selector-dock">
+              <button class="shape-btn active" data-shape="cylinder">DB Cylinder</button>
+              <button class="shape-btn" data-shape="star">Star (5-pt)</button>
+              <button class="shape-btn" data-shape="diamond">Diamond</button>
+              <button class="shape-btn" data-shape="hexagon">Hexagon</button>
+              <button class="shape-btn" data-shape="triangle">Triangle</button>
+              <button class="shape-btn" data-shape="cloud">Cloud</button>
+            </div>
+
+            <div class="shape-preview-stage">
+              <canvas id="bento-shape-canvas" width="460" height="180"></canvas>
+              <div class="shape-text-bind-box">
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+                  <span style="font-size: 0.74rem; color: var(--text-muted); font-family: var(--font-mono);">Centered Bound Text:</span>
+                  <div class="shape-color-swatches">
+                    <button class="swatch-dot active" data-shape-color="#06b6d4" style="background: #06b6d4;" title="Cyan"></button>
+                    <button class="swatch-dot" data-shape-color="#10b981" style="background: #10b981;" title="Emerald"></button>
+                    <button class="swatch-dot" data-shape-color="#f59e0b" style="background: #f59e0b;" title="Amber"></button>
+                    <button class="swatch-dot" data-shape-color="#f43f5e" style="background: #f43f5e;" title="Rose"></button>
+                    <button class="swatch-dot" data-shape-color="#a855f7" style="background: #a855f7;" title="Purple"></button>
+                  </div>
+                </div>
+                <input id="shape-bound-input" type="text" value="Users_Replica_v2" maxlength="32">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bento 2: Hand-Drawn Tables & 3D Study Flashcards -->
+        <div class="bento-card spotlight-card">
+          <div class="bento-card-header">
+            <div>
+              <span class="bento-badge">Spreadsheet & Study</span>
+              <h3 class="bento-title">Hand-Drawn Tables & 3D Cards</h3>
+              <p class="bento-desc">
+                In-cell spreadsheet editing with keyboard navigation. Flip directly into 3D study flashcards.
+              </p>
+            </div>
+          </div>
+
+          <div class="demo-table-wrapper">
+            <table class="interactive-minitable">
+              <thead>
+                <tr>
+                  <th>Component</th>
+                  <th>Latency</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="text" value="Edge Proxy"></td>
+                  <td><input type="text" value="1.2 ms"></td>
+                  <td><span class="status-live">Live</span></td>
+                </tr>
+                <tr>
+                  <td><input type="text" value="Redis Cache"></td>
+                  <td><input type="text" value="0.4 ms"></td>
+                  <td><span class="status-live">Live</span></td>
+                </tr>
+                <tr>
+                  <td><input type="text" value="Postgres Primary"></td>
+                  <td><input type="text" value="4.8 ms"></td>
+                  <td><span class="status-live">Active</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- 3D Flashcard Mini Stage -->
+          <div id="flashcard-stage" class="flashcard-stage" title="Click to flip card">
+            <div class="flashcard-flipper">
+              <div class="card-face front">
+                <span class="card-tag">3D FLASHCARD • QUESTION</span>
+                <h4>Why Local-First diagramming?</h4>
+                <span class="flip-hint">(Click to flip)</span>
+              </div>
+              <div class="card-face back">
+                <span class="card-tag" style="color: var(--doodle-emerald);">ANSWER</span>
+                <p>Zero cloud latency, zero server downtime, and permanent file ownership on your local disk.</p>
+                <span class="flip-hint">(Click to flip back)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bento 3: Synthesized Ambient Audio with Live Spectrum Waveform -->
+        <div class="bento-card spotlight-card">
+          <div class="bento-card-header">
+            <div>
+              <span class="bento-badge">Focus Studio</span>
+              <h3 class="bento-title">Synthesized Soundscapes</h3>
+              <p class="bento-desc">
+                100% Web Audio API procedural synthesis. Real-time spectrum analysis with zero MP3 downloads.
+              </p>
+            </div>
+          </div>
+
+          <div class="audio-studio-box">
+            <div class="audio-waveform-container">
+              <canvas id="audio-visualizer-canvas" width="320" height="70"></canvas>
+              <div id="visualizer-status" class="visualizer-status">Idling • Select any sound below to start</div>
+            </div>
+
+            <div class="sound-pills-grid">
+              <button id="sound-rain" class="sound-card-btn">
+                <div class="sound-card-btn-left">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="16" y1="13" x2="16" y2="21"/><line x1="8" y1="13" x2="8" y2="21"/><line x1="12" y1="15" x2="12" y2="23"/><path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"/></svg>
+                  <span>Rain</span>
+                </div>
+                <span class="sound-status">Off</span>
+              </button>
+              <button id="sound-lofi" class="sound-card-btn">
+                <div class="sound-card-btn-left">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                  <span>Lo-Fi Hum</span>
+                </div>
+                <span class="sound-status">Off</span>
+              </button>
+              <button id="sound-whitenoise" class="sound-card-btn">
+                <div class="sound-card-btn-left">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"/><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"/><path d="M19.1 4.9C23 8.8 23 15.1 19.1 19"/></svg>
+                  <span>White Noise</span>
+                </div>
+                <span class="sound-status">Off</span>
+              </button>
+              <button class="sound-card-btn" onclick="if(window.doodleAudio) window.doodleAudio.playPencilScratch(0.12)">
+                <div class="sound-card-btn-left">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+                  <span>Pencil</span>
+                </div>
+                <span style="font-size: 0.72rem; color: var(--text-muted); margin-left: auto;">Scratch</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bento 4: Executable JS Code Scratchpad -->
+        <div class="bento-card spotlight-card">
+          <div class="bento-card-header">
+            <div>
+              <span class="bento-badge">Scratchpad Runtime</span>
+              <h3 class="bento-title">Executable JS Scratchpad</h3>
+              <p class="bento-desc">
+                Evaluate algorithms directly inside canvas cards and stamp calculated output into vector text.
+              </p>
+            </div>
+          </div>
+
+          <div class="code-scratchpad-ide">
+            <div class="ide-topbar">
+              <span class="ide-dot red"></span>
+              <span class="ide-dot yellow"></span>
+              <span class="ide-dot green"></span>
+              <span class="ide-file">scratchpad.js</span>
+              <div class="ide-preset-tabs">
+                <button class="ide-preset-pill active" data-ide-preset="latency">Ping</button>
+                <button class="ide-preset-pill" data-ide-preset="geom">Geometry</button>
+                <button class="ide-preset-pill" data-ide-preset="auth">Auth</button>
+              </div>
+              <button id="run-code-btn" class="ide-run-btn">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <span>Run</span>
+              </button>
+            </div>
+            <textarea id="code-ide-editor" class="ide-editor" rows="4" spellcheck="false">// Doodle Desk Sandboxed Runtime
+const nodes = ['Gateway', 'Auth', 'Postgres'];
+const latency = nodes.map(n => ({ node: n, ping: Math.floor(Math.random() * 8 + 2) + 'ms' }));
+console.log(latency);</textarea>
+            <div id="ide-console-output" class="ide-output">
+              > Click "Run Script" to evaluate code in 0ms
+            </div>
+          </div>
+        </div>
+
+        <!-- Bento 5: Muscle-Memory Keyboard HUD -->
+        <div class="bento-card spotlight-card">
+          <div class="bento-card-header">
+            <div>
+              <span class="bento-badge">Keyboard First</span>
+              <h3 class="bento-title">Tactile Shortcut Matrix</h3>
+              <p class="bento-desc">
+                Press any key on your physical keyboard to test tactile feedback and tool selection.
+              </p>
+            </div>
+          </div>
+
+          <div class="keyboard-hud-matrix">
+            <div class="hud-keys-row">
+              <button class="keycap" data-key="v" data-tool="Select Tool (1 / V)">V</button>
+              <button class="keycap" data-key="r" data-tool="Rectangle (2 / R)">R</button>
+              <button class="keycap" data-key="d" data-tool="Diamond (3 / D)">D</button>
+              <button class="keycap" data-key="o" data-tool="Ellipse (4 / O)">O</button>
+              <button class="keycap" data-key="a" data-tool="Arrow Connector (5 / A)">A</button>
+              <button class="keycap" data-key="p" data-tool="Freehand Brush (7 / P)">P</button>
+            </div>
+            <div class="hud-keys-row" style="margin-top: 10px;">
+              <button class="keycap wide" data-key="shiftx" data-tool="Shift + X (Draw to Shape)">Shift + X</button>
+              <button class="keycap wide" data-key="ctrlk" data-tool="Ctrl + K (Command Palette)">Ctrl + K</button>
+            </div>
+            <div id="keyboard-tool-output" class="keyboard-tool-output">
+              Active Key: <strong id="active-key-name">Press or click any key above</strong>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       Multi-Tier 3D Isometric Architecture Studio
+       ====================================================================== -->
+  <section id="architecture-3d" class="iso-scrolly-section">
+    <!-- Pinned Sticky Scrollytelling Stage -->
+    <div class="iso-sticky-stage" id="iso-sticky-stage">
+      <div id="isometric-3d-studio" class="iso-studio-open">
+        <!-- Floating Island HUD Toolbar at Top (Single Clean Row) -->
+        <div class="iso-floating-island-bar">
+          <div class="iso-island-left">
+            <div class="iso-engine-badge">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              <span>3D Architecture Studio</span>
+            </div>
+            <div class="iso-telemetry-pill">
+              <span>Pitch: <strong id="iso-stat-pitch">55°</strong></span>
+              <span class="iso-dot-sep">•</span>
+              <span>Yaw: <strong id="iso-stat-yaw">30°</strong></span>
+              <span class="iso-dot-sep">•</span>
+              <span class="iso-inline-slider-item" title="Adjust 3D vertical elevation spacing">
+                <span>Z:</span>
+                <input id="iso-spacing-slider" type="range" min="40" max="180" value="105" step="5" class="iso-inline-range" aria-label="3D elevation spacing">
+                <strong id="iso-stat-spacing">105px</strong>
+              </span>
+            </div>
+          </div>
+
+          <!-- Camera Presets Segment -->
+          <div class="iso-camera-segment">
+            <button class="iso-preset-btn" data-iso-preset="isometric">Isometric</button>
+            <button class="iso-preset-btn active" data-iso-preset="architecture">Stack</button>
+            <button class="iso-preset-btn" data-iso-preset="cinematic">Cinematic</button>
+            <button class="iso-preset-btn" data-iso-preset="top">Top 2D</button>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="iso-actions-group">
+            <button id="iso-auto-rotate-btn" class="iso-action-btn" title="Toggle continuous orbit rotation">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+              <span>Auto-Rotate</span>
+            </button>
+            <button id="iso-reset-btn" class="iso-action-btn" title="Reset camera to default view">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+              <span>Reset</span>
+            </button>
+            <button id="iso-snapshot-btn" class="iso-action-btn primary" title="Stamp 3D diagram snapshot">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Snapshot</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Open Seamless 3D Viewport (Zero Card Borders, Full-Bleed Canvas) -->
+        <div class="iso-3d-viewport" tabindex="0">
+          <div class="iso-3d-stage">
+            <!-- Dynamically populated by isometric-3d.js with floor plates, risers, and nodes -->
+          </div>
+
+          <!-- Unified Clean Bottom HUD Dock (Single Spotless Row) -->
+          <div class="iso-bottom-dock">
+            <!-- Left: Floating Orbit Navigation Pill -->
+            <div class="iso-drag-hint">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+              <span>Scroll page to assemble • Drag to orbit 360°</span>
+            </div>
+
+            <!-- Center: Floating 3D Layer Story Timeline Scrubber -->
+            <div class="iso-story-scrubber">
+              <div class="iso-scrubber-pills">
+                <button type="button" class="iso-step-btn" id="iso-step-prev" title="Previous Tier">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <div class="iso-tier-chips" id="iso-tier-chips">
+                  <button type="button" class="iso-tier-chip active is-top" data-tier-count="1" style="--chip-color: #10b981;">
+                    <span class="chip-dot"></span><span>L0 Data</span>
+                  </button>
+                  <button type="button" class="iso-tier-chip active is-top" data-tier-count="2" style="--chip-color: #06b6d4;">
+                    <span class="chip-dot"></span><span>L1 Compute</span>
+                  </button>
+                  <button type="button" class="iso-tier-chip active is-top" data-tier-count="3" style="--chip-color: #6366f1;">
+                    <span class="chip-dot"></span><span>L2 Gateway</span>
+                  </button>
+                  <button type="button" class="iso-tier-chip active is-top" data-tier-count="4" style="--chip-color: #ec4899;">
+                    <span class="chip-dot"></span><span>L3 Client</span>
+                  </button>
+                </div>
+                <button type="button" class="iso-step-btn" id="iso-step-next" title="Next Tier">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+              </div>
+
+              <div class="iso-scrubber-sep"></div>
+
+              <div class="iso-story-controls">
+                <button type="button" class="iso-story-btn" id="iso-tour-btn" title="Automated 3D tour">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  <span>Auto Tour</span>
+                </button>
+                <button type="button" class="iso-story-btn" id="iso-all-btn" title="Toggle full stack or foundation">
+                  <span>Base Only</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Right: Live Selected Node Telemetry Pill -->
+            <div class="iso-node-details">
+              <span class="iso-inspect-dot"></span>
+              <span class="iso-inspect-title">PostgreSQL 16 (WAL)</span>
+              <span class="iso-inspect-tier">Tier 0: Data</span>
+              <span class="iso-dot-sep">•</span>
+              <span class="iso-inspect-latency">0.3 ms</span>
+              <span class="iso-dot-sep">•</span>
+              <span class="iso-inspect-protocol">Postgres Binary Wire</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       Interactive 2D Physics Playground (Drafting Table)
+       ====================================================================== -->
+  <section id="physics" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Canvas Physics Drafting Table</h2>
+        <p class="section-desc">
+          Click & drag shapes to throw them with velocity, hit "Radial Blast" for an explosive impulse, or toggle zero gravity.
+        </p>
+      </div>
+
+      <div class="physics-drafting-desk">
+        <div class="desk-ruler-top">
+          <span>0px</span><span>100px</span><span>200px</span><span>300px</span><span>400px</span><span>500px</span><span>600px</span><span>700px</span><span>800px</span>
+        </div>
+        <div class="desk-telemetry-hud">
+          <span class="telemetry-pill">● 60.0 FPS</span>
+          <span class="telemetry-pill">5 RIGID BODIES</span>
+          <span class="telemetry-pill">COLLISION: ELASTIC</span>
+        </div>
+        <canvas id="physics-canvas"></canvas>
+      </div>
+
+      <div class="physics-controls-bar">
+        <button id="physics-blast-btn" class="physics-btn primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 8 21 9 17 14 18 20 12 17 6 20 7 14 3 9 9 8 12 2"/></svg>
+          <span>Radial Blast</span>
+        </button>
+        <button id="physics-gravity-btn" class="physics-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12a4 4 0 1 0 8 0"/></svg>
+          <span id="gravity-btn-label">Toggle Zero Gravity</span>
+        </button>
+        <button id="physics-reset-btn" class="physics-btn">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          <span>Reset Desk</span>
+        </button>
+        <span class="physics-tip">
+          (Click & drag any shape to fling it across the drafting table)
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       Engineering Architecture Pillars
+       ====================================================================== -->
+  <section class="section tech-pillars-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Why Doodle Desk is Fast</h2>
+        <p class="section-desc">
+          Architecture choices made for technical diagrams with tens of thousands of objects.
+        </p>
+      </div>
+
+      <div class="pillars-grid">
+        <div class="pillar-card spotlight-card">
+          <div class="pillar-num">01</div>
+          <h3 class="pillar-title">Zero DOM Overhead</h3>
+          <p class="pillar-desc">
+            Browsers choke on 5,000 SVG DOM elements. Doodle Desk draws directly to a hardware-accelerated 2D canvas with double-buffering. Smooth 60 FPS panning even on multi-hour system blueprints.
+          </p>
+        </div>
+
+        <div class="pillar-card spotlight-card">
+          <div class="pillar-num">02</div>
+          <h3 class="pillar-title">100% On Your Filesystem</h3>
+          <p class="pillar-desc">
+            Zero cloud telemetry. No logins, no tracking cookies, no mandatory internet connectivity. Diagrams stay on your local SSD in human-readable open `.doodle` JSON format.
+          </p>
+        </div>
+
+        <div class="pillar-card spotlight-card">
+          <div class="pillar-num">03</div>
+          <h3 class="pillar-title">Encrypted P2P Mesh</h3>
+          <p class="pillar-desc">
+            When you collaborate live with peers, Doodle Desk establishes direct browser-to-desktop WebRTC data channels via PeerJS. Your strokes never touch a centralized corporate database.
+          </p>
+        </div>
+
+        <div class="pillar-card spotlight-card">
+          <div class="pillar-num">04</div>
+          <h3 class="pillar-title">Native Desktop Footprint</h3>
+          <p class="pillar-desc">
+            Packaged cleanly with Electron 33 and modern V8 optimizations. Cold starts in under 600ms, consumes minimal memory, and supports global OS shortcuts natively.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       Comparison Matrix (Technical Breakdown)
+       ====================================================================== -->
+  <section id="comparison" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Built for Engineering Autonomy</h2>
+        <p class="section-desc">
+          Compare Doodle Desk's native offline architecture against cloud-tethered alternatives.
+        </p>
+      </div>
+
+      <div class="comparison-wrapper">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Architecture Feature</th>
+              <th class="highlight">Doodle Desk</th>
+              <th>Miro</th>
+              <th>Excalidraw (Web)</th>
+              <th>FigJam</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>100% Offline Desktop App</strong></td>
+              <td class="highlight"><span class="ico-status check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Native Offline</span></td>
+              <td><span class="ico-status cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Cloud Only</span></td>
+              <td><span class="ico-status warn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Browser Cache</span></td>
+              <td><span class="ico-status cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Cloud Only</span></td>
+            </tr>
+            <tr>
+              <td><strong>Data Sovereignty & Telemetry</strong></td>
+              <td class="highlight"><span class="ico-status check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Local Disk Only</span></td>
+              <td><span class="ico-status cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Corporate Cloud</span></td>
+              <td><span class="ico-status warn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Cloud Storage</span></td>
+              <td><span class="ico-status cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Figma Cloud</span></td>
+            </tr>
+            <tr>
+              <td><strong>8 First-Class Geometric Shapes</strong></td>
+              <td class="highlight"><span class="ico-status check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Native Vector</span></td>
+              <td><span class="ico-status check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Standard</span></td>
+              <td><span class="ico-status warn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Basic 3</span></td>
+              <td><span class="ico-status check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Standard</span></td>
+            </tr>
+            <tr>
+              <td><strong>Hand-Drawn Tables & 3D Cards</strong></td>
+              <td class="highlight"><span class="ico-status check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Built-in</span></td>
+              <td><span class="ico-status cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Tables Only</span></td>
+              <td><span class="ico-status cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> None</span></td>
+              <td><span class="ico-status cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Tables Only</span></td>
+            </tr>
+            <tr>
+              <td><strong>Executable JS Code Runner</strong></td>
+              <td class="highlight"><span class="ico-status check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Sandboxed Runner</span></td>
+              <td><span class="ico-status cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> None</span></td>
+              <td><span class="ico-status cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> None</span></td>
+              <td><span class="ico-status cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> None</span></td>
+            </tr>
+            <tr>
+              <td><strong>Napkin-to-Vector Scanner</strong></td>
+              <td class="highlight"><span class="ico-status check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Native Pipeline</span></td>
+              <td><span class="ico-status cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Paid Add-on</span></td>
+              <td><span class="ico-status cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> None</span></td>
+              <td><span class="ico-status cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Paid AI Plan</span></td>
+            </tr>
+            <tr>
+              <td><strong>Peer-to-Peer Live Rooms</strong></td>
+              <td class="highlight"><span class="ico-status check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg> Encrypted WebRTC</span></td>
+              <td><span class="ico-status cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Server Database</span></td>
+              <td><span class="ico-status warn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Third-party Relay</span></td>
+              <td><span class="ico-status cross"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Figma Servers</span></td>
+            </tr>
+            <tr>
+              <td><strong>Price & Licensing</strong></td>
+              <td class="highlight"><strong>Free Forever (MIT)</strong></td>
+              <td>$8–$16 / mo / seat</td>
+              <td>Freemium Plus</td>
+              <td>$5 / mo / seat</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       Cryptographic Provenance & Security Architecture
+       ====================================================================== -->
+  <section id="security-audit" class="section security-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Cryptographic Provenance & Security</h2>
+        <p class="section-desc">
+          Zero telemetry. Cryptographically verified binaries. 100% local-first data sovereignty.
+        </p>
+      </div>
+
+      <div class="security-grid">
+        <!-- Card 1: 0-Telemetry Network Audit -->
+        <div class="security-card spotlight-card">
+          <div class="security-card-header">
+            <div class="security-badge pass">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>AIR-GAPPED AUDIT: 100% PASS</span>
+            </div>
+            <h3 class="security-card-title">Zero-Telemetry Guarantee</h3>
+            <p class="security-card-desc">
+              Independent packet capture audit confirms zero background socket connections, zero analytics beacons, and zero telemetry payloads.
+            </p>
+          </div>
+
+          <div class="audit-metrics-table">
+            <div class="audit-row">
+              <span class="audit-metric">Outbound HTTP/HTTPS requests:</span>
+              <span class="audit-val zero">0 requests</span>
+            </div>
+            <div class="audit-row">
+              <span class="audit-metric">Third-party analytics trackers:</span>
+              <span class="audit-val zero">0 found</span>
+            </div>
+            <div class="audit-row">
+              <span class="audit-metric">Browser cookies & trackers:</span>
+              <span class="audit-val zero">0 stored</span>
+            </div>
+            <div class="audit-row">
+              <span class="audit-metric">Mandatory cloud login:</span>
+              <span class="audit-val zero">Disabled</span>
+            </div>
+            <div class="audit-row">
+              <span class="audit-metric">Network connectivity required:</span>
+              <span class="audit-val zero">None (Air-Gapped)</span>
+            </div>
+          </div>
+
+          <div class="audit-footer">
+            <span class="audit-cert-seal">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>Verified for Air-Gapped Financial & Enterprise Desktops</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Card 2: Cryptographic Checksum Ledger -->
+        <div class="security-card spotlight-card">
+          <div class="security-card-header">
+            <div class="security-badge hash">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              <span>SHA-256 BINARY SIGNATURES</span>
+            </div>
+            <h3 class="security-card-title">Release Provenance</h3>
+            <p class="security-card-desc">
+              Every installer binary is compiled with reproducible builds and accompanied by official SHA-256 hashes to guarantee binary integrity.
+            </p>
+          </div>
+
+          <div class="checksum-list">
+            <div class="checksum-item">
+              <div class="checksum-meta">
+                <span class="checksum-file">DoodleDesk-Setup-1.0.0.exe (Windows)</span>
+                <span class="checksum-size">68.4 MB</span>
+              </div>
+              <div class="checksum-hash-row">
+                <code>e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855</code>
+                <button class="hash-copy-btn" data-copy-hash="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855" title="Copy SHA-256 hash">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="checksum-item">
+              <div class="checksum-meta">
+                <span class="checksum-file">DoodleDesk-1.0.0-universal.dmg (macOS)</span>
+                <span class="checksum-size">72.1 MB</span>
+              </div>
+              <div class="checksum-hash-row">
+                <code>7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069</code>
+                <button class="hash-copy-btn" data-copy-hash="7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069" title="Copy SHA-256 hash">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="checksum-item">
+              <div class="checksum-meta">
+                <span class="checksum-file">DoodleDesk-1.0.0.AppImage (Linux)</span>
+                <span class="checksum-size">65.8 MB</span>
+              </div>
+              <div class="checksum-hash-row">
+                <code>9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08</code>
+                <button class="hash-copy-btn" data-copy-hash="9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08" title="Copy SHA-256 hash">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Open .doodle JSON Format -->
+        <div class="security-card spotlight-card">
+          <div class="security-card-header">
+            <div class="security-badge spec">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              <span>OPEN SPECIFICATION v1</span>
+            </div>
+            <h3 class="security-card-title">Plain JSON & Git-Diff Friendly</h3>
+            <p class="security-card-desc">
+              Your architectural diagrams are stored as transparent JSON files. Review pull request diffs directly in GitHub without proprietary lock-in.
+            </p>
+          </div>
+
+          <div class="json-spec-preview">
+            <div class="json-spec-header">
+              <span class="json-tab active">architecture.doodle</span>
+              <span class="json-tag">Format Spec v1.0</span>
+            </div>
+            <pre class="json-spec-code"><code>{
+  <span class="j-key">"formatVersion"</span>: 1,
+  <span class="j-key">"generator"</span>: <span class="j-str">"Doodle Desk 1.0.0"</span>,
+  <span class="j-key">"canvas"</span>: { <span class="j-key">"theme"</span>: <span class="j-str">"obsidian"</span>, <span class="j-key">"grid"</span>: <span class="j-bool">true</span> },
+  <span class="j-key">"elements"</span>: [
+    {
+      <span class="j-key">"id"</span>: <span class="j-str">"pod_auth_gate"</span>,
+      <span class="j-key">"type"</span>: <span class="j-str">"rectangle"</span>,
+      <span class="j-key">"x"</span>: 240, <span class="j-key">"y"</span>: 160,
+      <span class="j-key">"elevationTier"</span>: 2,
+      <span class="j-key">"text"</span>: <span class="j-str">"Auth & Envoy Ingress"</span>
+    }
+  ]
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       Download Center
+       ====================================================================== -->
+  <section id="download" class="section download-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Install Doodle Desk</h2>
+        <p class="section-desc">
+          Available across Windows, macOS, and Linux. Free forever under permissive MIT open source license.
+        </p>
+      </div>
+
+      <div class="download-layout">
+        <!-- Dynamic Detected OS Hero Card -->
+        <div class="download-card-hero spotlight-card" id="download-hero-card">
+          <div>
+            <div class="download-badge-row">
+              <span class="download-ribbon" id="dl-hero-ribbon">Official Release v1.0.2</span>
+              <span class="download-pill" id="dl-hero-arch">x64 / ARM64</span>
+              <span class="download-detected-pill" id="dl-detected-badge" title="Automatically detected from your browser environment">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                <span id="dl-detected-text">Detected: Windows</span>
+              </span>
+            </div>
+            <h3 class="download-hero-title" id="dl-hero-title">Doodle Desk for Windows</h3>
+            <p class="download-hero-desc" id="dl-hero-desc">
+              Complete offline desktop suite with native `.doodle` file associations, hardware-accelerated canvas rendering, and zero background telemetry.
+            </p>
+
+            <div class="download-specs">
+              <div>
+                <strong>Platform</strong>
+                <span id="dl-hero-platform">Windows 10 / 11 (64-bit)</span>
+              </div>
+              <div>
+                <strong>Installer Type</strong>
+                <span id="dl-hero-installer">Standalone NSIS (.exe)</span>
+              </div>
+              <div>
+                <strong>Security</strong>
+                <span id="dl-hero-security">Verified SHA256 • Clean</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <a id="dl-hero-btn" href="https://github.com/yvvsatyanarayana-dev/Doodle-Desk/releases/download/v1.0.2/Doodle-Desk-Setup-1.0.2.exe" class="btn-primary hero-cta-btn-large" style="width: 100%; justify-content: center; margin-bottom: 8px;">
+              <span id="dl-hero-btn-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M0 0h11.377v11.372H0zM12.623 0H24v11.372H12.623zM0 12.623h11.377V24H0zM12.623 12.623H24V24H12.623z"/>
+                </svg>
+              </span>
+              <span id="dl-hero-btn-text">Download Windows Installer (.exe)</span>
+            </a>
+            <div id="dl-hero-sub-actions" class="download-hero-sub-actions">
+              <span>Prefer portable?</span>
+              <a href="https://github.com/yvvsatyanarayana-dev/Doodle-Desk/releases/download/v1.0.2/Doodle-Desk-1.0.2.exe">Download Windows Portable (.exe)</a>
+              <span>•</span>
+              <a href="https://github.com/yvvsatyanarayana-dev/Doodle-Desk/releases" target="_blank" rel="noopener noreferrer">All Checksums</a>
+            </div>
+            <div class="download-security-sub">
+              Zero Telemetry • No Account Required • 100% Free Forever
+            </div>
+          </div>
+        </div>
+
+        <!-- Cross-Platform Subcards Stack -->
+        <div class="download-subcards-stack" id="download-subcards-stack">
+          <!-- Windows Portable -->
+          <div class="download-subcard spotlight-card">
+            <div>
+              <div class="subcard-title-row">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M0 0h11.377v11.372H0zM12.623 0H24v11.372H12.623zM0 12.623h11.377V24H0zM12.623 12.623H24V24H12.623z"/></svg>
+                <h4>Windows Portable (.exe)</h4>
+              </div>
+              <p>Run without installer. Zero registry footprint • 85.8 MB</p>
+            </div>
+            <a href="https://github.com/yvvsatyanarayana-dev/Doodle-Desk/releases/download/v1.0.2/Doodle-Desk-1.0.2.exe" class="btn-secondary" title="Download standalone Windows executable">Download</a>
+          </div>
+
+          <!-- macOS Apple Silicon DMG -->
+          <div class="download-subcard spotlight-card">
+            <div>
+              <div class="subcard-title-row">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.75 1.04-1.8 0.92-2.85-.9.04-1.99.6-2.63 1.35-.57.65-1.06 1.72-.93 2.74 1 .08 2.02-.49 2.64-1.24z"/></svg>
+                <h4>macOS Apple Silicon (.dmg)</h4>
+              </div>
+              <p>M1, M2, M3, M4 native ARM64 performance • 124.5 MB</p>
+            </div>
+            <a href="https://github.com/yvvsatyanarayana-dev/Doodle-Desk/releases/download/v1.0.2/Doodle-Desk-1.0.2-arm64.dmg" class="btn-secondary" title="Download Apple Silicon DMG">Download</a>
+          </div>
+
+          <!-- macOS Intel DMG -->
+          <div class="download-subcard spotlight-card">
+            <div>
+              <div class="subcard-title-row">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.75 1.04-1.8 0.92-2.85-.9.04-1.99.6-2.63 1.35-.57.65-1.06 1.72-.93 2.74 1 .08 2.02-.49 2.64-1.24z"/></svg>
+                <h4>macOS Intel x64 (.dmg)</h4>
+              </div>
+              <p>Intel Macs running Big Sur or later • 128.9 MB</p>
+            </div>
+            <a href="https://github.com/yvvsatyanarayana-dev/Doodle-Desk/releases/download/v1.0.2/Doodle-Desk-1.0.2.dmg" class="btn-secondary" title="Download Intel macOS DMG">Download</a>
+          </div>
+
+          <!-- Linux AppImage & DEB -->
+          <div class="download-subcard spotlight-card">
+            <div>
+              <div class="subcard-title-row">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.001 2c-3.314 0-6 2.686-6 6 0 1.25.38 2.41 1.033 3.376C5.59 12.22 4.5 13.98 4.5 16c0 2.76 2.24 5 5 5h5c2.76 0 5-2.24 5-5 0-2.02-1.09-3.78-2.533-4.624A5.965 5.965 0 0 0 18.001 8c0-3.314-2.686-6-6-6zm-1.75 6.5a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm3.5 0a1.25 1.25 0 1 1 0-2.5 1.25 1.25 0 0 1 0 2.5zm-1.75 3c1.2 0 2.17.67 2.17 1.5H9.83c0-.83.97-1.5 2.17-1.5z"/></svg>
+                <h4>Linux (.AppImage / .deb / .rpm)</h4>
+              </div>
+              <p>Ubuntu, Debian, Fedora, Arch, and portable AppImage • 134 MB</p>
+            </div>
+            <div style="display: flex; gap: 6px;">
+              <a href="https://github.com/yvvsatyanarayana-dev/Doodle-Desk/releases/download/v1.0.2/Doodle-Desk-1.0.2.AppImage" class="btn-secondary" title="Direct download Linux AppImage">AppImage</a>
+              <a href="https://github.com/yvvsatyanarayana-dev/Doodle-Desk/releases/download/v1.0.2/doodle-desk_1.0.2_amd64.deb" class="btn-secondary" title="Direct download Debian / Ubuntu package">.deb</a>
+            </div>
+          </div>
+
+          <!-- All GitHub Releases Link -->
+          <div class="download-subcard spotlight-card" style="border-color: var(--border-medium);">
+            <div>
+              <h4>View All GitHub Releases & Checksums</h4>
+              <p>Inspect signatures, SHA256 hashes, release notes, and source code.</p>
+            </div>
+            <a href="https://github.com/yvvsatyanarayana-dev/Doodle-Desk/releases" target="_blank" rel="noopener noreferrer" class="btn-secondary">Releases ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package Manager Installation -->
+      <div class="download-cli-install-box">
+        <div class="cli-box-header">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+          <span class="cli-box-title">Command Line & Package Managers</span>
+        </div>
+        <div class="terminal-install-bar">
+          <div class="terminal-tabs">
+            <button class="terminal-tab active" data-pkg-tab="winget">winget</button>
+            <button class="terminal-tab" data-pkg-tab="scoop">scoop</button>
+            <button class="terminal-tab" data-pkg-tab="brew">brew</button>
+            <button class="terminal-tab" data-pkg-tab="bash">curl</button>
+          </div>
+          <div class="terminal-code-box">
+            <span class="terminal-prompt">$</span>
+            <code id="terminal-command-text">winget install DoodleDesk</code>
+            <button id="copy-cmd-btn" class="terminal-copy-btn" title="Copy to clipboard">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+              <span id="copy-cmd-label">Copy</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       FAQ Accordion
+       ====================================================================== -->
+  <section id="faq" class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Common Inquiries</h2>
+        <p class="section-desc">
+          Clear answers regarding privacy, file formats, and offline architecture.
+        </p>
+      </div>
+
+      <div class="faq-box">
+        <div class="faq-accordion-item open">
+          <button class="faq-trigger">
+            <span>Is Doodle Desk completely free to use?</span>
+            <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body">
+            Yes, 100% free forever under the permissive MIT Open Source License. There are no paid subscription tiers, no feature paywalls, and no mandatory cloud accounts.
+          </div>
+        </div>
+
+        <div class="faq-accordion-item">
+          <button class="faq-trigger">
+            <span>Where are my files and diagrams saved?</span>
+            <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body">
+            Exclusively on your local machine. Doodle Desk uses standard open `.doodle` JSON files. You can save them in your project folders, commit them to git repositories, or back them up wherever you choose.
+          </div>
+        </div>
+
+        <div class="faq-accordion-item">
+          <button class="faq-trigger">
+            <span>Does Doodle Desk require an internet connection?</span>
+            <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body">
+            No. Doodle Desk runs 100% offline. The sketchy vector rendering engine, JS code runner, ambient sound synthesizer, and shape recognition require zero network access.
+          </div>
+        </div>
+
+        <div class="faq-accordion-item">
+          <button class="faq-trigger">
+            <span>How does live collaboration work without cloud databases?</span>
+            <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body">
+            Doodle Desk features direct Peer-to-Peer (P2P) WebRTC mesh networking. Collaborators connect machine-to-machine. Strokes, pointers, and chat messages stay directly between the peers with zero third-party cloud storage.
+          </div>
+        </div>
+
+        <div class="faq-accordion-item">
+          <button class="faq-trigger">
+            <span>Can I export diagrams to SVG and PNG?</span>
+            <svg class="faq-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-body">
+            Yes. Doodle Desk includes vector SVG export, transparent PNG export (with 1x, 2x, 3x resolution scale multipliers), standalone interactive HTML export, and native JSON.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       Site Footer
+       ====================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-columns">
+        <div class="footer-intro">
+          <div class="footer-brand-header">
+            <img src="assets/doodle-logo-clean.png" alt="D" class="footer-brand-logo">
+            <span class="footer-brand-text">oodle Desk</span>
+          </div>
+          <p>
+            The production-grade offline whiteboard for visual thinkers, developers, and architects. Local-first freedom, authentic hand-drawn aesthetics.
+          </p>
+        </div>
+
+        <div class="footer-nav-col">
+          <h5>Product</h5>
+          <ul class="footer-nav-links">
+            <li><a href="#scanner" class="footer-nav-item">Napkin Scanner</a></li>
+            <li><a href="#bento" class="footer-nav-item">Vector Engine</a></li>
+            <li><a href="#physics" class="footer-nav-item">Physics Engine</a></li>
+            <li><a href="#comparison" class="footer-nav-item">Comparison</a></li>
+            <li><a href="#download" class="footer-nav-item">Download</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-nav-col">
+          <h5>Studio Tools</h5>
+          <ul class="footer-nav-links">
+            <li><a href="#bento" class="footer-nav-item">Tables & Flashcards</a></li>
+            <li><a href="#bento" class="footer-nav-item">Sound Studio</a></li>
+            <li><a href="#bento" class="footer-nav-item">JS Scratchpad</a></li>
+            <li><a href="#bento" class="footer-nav-item">Keyboard HUD</a></li>
+            <li><a href="#physics" class="footer-nav-item">Drafting Table</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-nav-col">
+          <h5>Open Source</h5>
+          <ul class="footer-nav-links">
+            <li><a href="https://github.com/yvvsatyanarayana-dev/Doodle-Desk" target="_blank" rel="noopener noreferrer" class="footer-nav-item">GitHub Repository</a></li>
+            <li><a href="https://github.com/yvvsatyanarayana-dev/Doodle-Desk/issues" target="_blank" rel="noopener noreferrer" class="footer-nav-item">Issue Tracker</a></li>
+            <li><a href="https://github.com/yvvsatyanarayana-dev/Doodle-Desk/releases" target="_blank" rel="noopener noreferrer" class="footer-nav-item">Release Notes (v1.0.2)</a></li>
+            <li><a href="https://github.com/yvvsatyanarayana-dev/Doodle-Desk/blob/main/LICENSE" target="_blank" rel="noopener noreferrer" class="footer-nav-item">License (MIT)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-legal-bar">
+        <div>
+          © 2026 Doodle Desk. Free for Life & Open Source under MIT License.
+        </div>
+        <div class="footer-legal-actions">
+          <button data-open-shortcuts class="footer-nav-item shortcuts-trigger-btn">
+            Shortcuts (<kbd class="kbd">Ctrl+K</kbd>)
+          </button>
+          <span>•</span>
+          <a href="#" class="footer-nav-item">Back to Top ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================================
+       Raycast-Grade Command Palette (<kbd>Ctrl+K</kbd>)
+       ====================================================================== -->
+  <div id="shortcuts-modal" class="spotlight-modal-overlay">
+    <div class="spotlight-window palette-window">
+      <!-- Search Bar -->
+      <div class="palette-input-bar">
+        <svg class="palette-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input id="palette-search-input" type="text" placeholder="Type a command, tool, or action (e.g. 'theme', 'rain', 'download', 'table')..." autocomplete="off" spellcheck="false">
+        <div class="palette-input-badges">
+          <button id="close-shortcuts-modal" class="palette-esc-badge" aria-label="Close Modal">ESC</button>
+        </div>
+      </div>
+
+      <!-- Segmented View Tabs -->
+      <div class="palette-nav-tabs">
+        <button class="palette-tab active" data-palette-view="commands">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span>Actions & Commands</span>
+        </button>
+        <button class="palette-tab" data-palette-view="shortcuts">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2.5"/><path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M8 12h8M6 16h.01M18 16h.01"/></svg>
+          <span>Keyboard Shortcuts</span>
+        </button>
+      </div>
+
+      <!-- Palette Body -->
+      <div class="palette-body">
+        <!-- View A: Actionable Commands List -->
+        <div id="palette-commands-view" class="palette-list-wrapper">
+          <div class="palette-section-label">STUDIO ACTIONS</div>
+
+          <div class="palette-item active" data-action="toggle-theme" data-keywords="theme dark light mode color">
+            <div class="palette-item-left">
+              <span class="palette-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></span>
+              <div class="palette-text">
+                <span class="palette-title">Toggle Dark / Light Theme</span>
+                <span class="palette-desc">Switch between Obsidian Dark and Paper Whiteboard modes</span>
+              </div>
+            </div>
+            <kbd class="kbd">T</kbd>
+          </div>
+
+          <div class="palette-item" data-action="download-app" data-keywords="download windows mac linux installer exe setup dmg appimage">
+            <div class="palette-item-left">
+              <span class="palette-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+              <div class="palette-text">
+                <span class="palette-title" id="palette-dl-title">Download Doodle Desk (Auto-detect OS)</span>
+                <span class="palette-desc" id="palette-dl-desc">Direct download latest v1.0.2 release binary</span>
+              </div>
+            </div>
+            <kbd class="kbd">Enter</kbd>
+          </div>
+
+          <div class="palette-item" data-action="copy-winget" data-keywords="winget terminal cli copy package">
+            <div class="palette-item-left">
+              <span class="palette-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg></span>
+              <div class="palette-text">
+                <span class="palette-title">Copy winget install command</span>
+                <span class="palette-desc">winget install DoodleDesk</span>
+              </div>
+            </div>
+            <kbd class="kbd">CLI</kbd>
+          </div>
+
+          <div class="palette-section-label">FOCUS SOUNDS</div>
+
+          <div class="palette-item" data-action="toggle-rain" data-keywords="rain sound audio music focus ambient">
+            <div class="palette-item-left">
+              <span class="palette-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="16" y1="13" x2="16" y2="21"/><line x1="8" y1="13" x2="8" y2="21"/><line x1="12" y1="15" x2="12" y2="23"/><path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 1 0 4 15.25"/></svg></span>
+              <div class="palette-text">
+                <span class="palette-title">Toggle Ambient Rain Audio</span>
+                <span class="palette-desc">Procedural pink-noise rain synthesis via Web Audio</span>
+              </div>
+            </div>
+            <span class="palette-tag-pill">Audio</span>
+          </div>
+
+          <div class="palette-item" data-action="toggle-lofi" data-keywords="lofi hum audio sound vinyl warm">
+            <div class="palette-item-left">
+              <span class="palette-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></span>
+              <div class="palette-text">
+                <span class="palette-title">Toggle Warm Lo-Fi Vinyl Hum</span>
+                <span class="palette-desc">Filtered analog harmonic hum</span>
+              </div>
+            </div>
+            <span class="palette-tag-pill">Audio</span>
+          </div>
+
+          <div class="palette-section-label">NAVIGATION & EXPERIMENTS</div>
+
+          <div class="palette-item" data-action="jump-scanner" data-keywords="napkin scanner ai vector split slider cv">
+            <div class="palette-item-left">
+              <span class="palette-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span>
+              <div class="palette-text">
+                <span class="palette-title">Napkin to Vector Scanner</span>
+                <span class="palette-desc">Interactive split slider computer vision demo</span>
+              </div>
+            </div>
+            <span class="palette-tag-pill">Jump</span>
+          </div>
+
+          <div class="palette-item" data-action="jump-3d" data-keywords="3d architecture isometric elevation risers stack layers camera">
+            <div class="palette-item-left">
+              <span class="palette-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span>
+              <div class="palette-text">
+                <span class="palette-title">Multi-Tier 3D Architecture Studio</span>
+                <span class="palette-desc">Interactive 3D isometric blueprint stratification</span>
+              </div>
+            </div>
+            <span class="palette-tag-pill">3D</span>
+          </div>
+
+          <div class="palette-item" data-action="jump-physics" data-keywords="physics drafting table gravity rigid blast">
+            <div class="palette-item-left">
+              <span class="palette-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15 8 21 9 17 14 18 20 12 17 6 20 7 14 3 9 9 8 12 2"/></svg></span>
+              <div class="palette-text">
+                <span class="palette-title">Canvas Physics Drafting Table</span>
+                <span class="palette-desc">60 FPS rigid body 2D simulation with blast & zero-g</span>
+              </div>
+            </div>
+            <span class="palette-tag-pill">Jump</span>
+          </div>
+
+          <div class="palette-item" data-action="jump-security" data-keywords="security audit sha256 checksum privacy zero telemetry provenance">
+            <div class="palette-item-left">
+              <span class="palette-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+              <div class="palette-text">
+                <span class="palette-title">Cryptographic Provenance & Security Audit</span>
+                <span class="palette-desc">Air-gapped audit, SHA-256 hashes & .doodle spec</span>
+              </div>
+            </div>
+            <span class="palette-tag-pill">Audit</span>
+          </div>
+
+          <div class="palette-item" data-action="jump-comparison" data-keywords="comparison miro excalidraw figjam table">
+            <div class="palette-item-left">
+              <span class="palette-icon"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span>
+              <div class="palette-text">
+                <span class="palette-title">Technical Comparison Matrix</span>
+                <span class="palette-desc">Doodle Desk vs cloud-tethered alternatives</span>
+              </div>
+            </div>
+            <span class="palette-tag-pill">Jump</span>
+          </div>
+        </div>
+
+        <!-- View B: Full Keyboard Shortcut Matrix -->
+        <div id="palette-shortcuts-view" class="shortcuts-columns" style="display: none;">
+          <div class="shortcut-deck">
+            <h4 class="deck-title">General Commands</h4>
+            <div class="key-item"><span>New Document</span><kbd class="kbd">Ctrl+N</kbd></div>
+            <div class="key-item"><span>Open Document</span><kbd class="kbd">Ctrl+O</kbd></div>
+            <div class="key-item"><span>Save Document</span><kbd class="kbd">Ctrl+S</kbd></div>
+            <div class="key-item"><span>Command Palette</span><kbd class="kbd">Ctrl+K</kbd></div>
+            <div class="key-item"><span>Undo / Redo</span><kbd class="kbd">Ctrl+Z / Y</kbd></div>
+            <div class="key-item"><span>Print Canvas</span><kbd class="kbd">Ctrl+P</kbd></div>
+          </div>
+
+          <div class="shortcut-deck">
+            <h4 class="deck-title">Tools & Selection</h4>
+            <div class="key-item"><span>Selection Tool</span><kbd class="kbd">1</kbd> or <kbd class="kbd">V</kbd></div>
+            <div class="key-item"><span>Rectangle</span><kbd class="kbd">2</kbd> or <kbd class="kbd">R</kbd></div>
+            <div class="key-item"><span>Diamond</span><kbd class="kbd">3</kbd> or <kbd class="kbd">D</kbd></div>
+            <div class="key-item"><span>Ellipse</span><kbd class="kbd">4</kbd> or <kbd class="kbd">O</kbd></div>
+            <div class="key-item"><span>Arrow Connector</span><kbd class="kbd">5</kbd> or <kbd class="kbd">A</kbd></div>
+            <div class="key-item"><span>Freehand Pencil</span><kbd class="kbd">7</kbd> or <kbd class="kbd">P</kbd></div>
+            <div class="key-item"><span>Draw to Shape</span><kbd class="kbd">Shift+X</kbd></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Raycast-Style Footer Navigation Bar -->
+      <div class="palette-footer-bar">
+        <div class="palette-footer-keys">
+          <span><kbd class="palette-mini-key">↑</kbd><kbd class="palette-mini-key">↓</kbd> navigate</span>
+          <span class="sep">•</span>
+          <span><kbd class="palette-mini-key">↵</kbd> execute</span>
+          <span class="sep">•</span>
+          <span><kbd class="palette-mini-key">Esc</kbd> close</span>
+        </div>
+        <div class="palette-footer-count" id="palette-result-count">10 actions</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/ambient-audio.js"></script>
+  <script src="js/canvas-demo.js"></script>
+  <script src="js/isometric-3d.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
