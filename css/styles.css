@@ -100,7 +100,10 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
   font-size: 16px;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 body {
@@ -109,12 +112,18 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  max-width: 100vw;
   transition: background-color 0.25s ease, color 0.25s ease;
   background-image: var(--grid-pattern);
   background-size: 32px 32px;
   background-attachment: fixed;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body.mobile-nav-locked {
+  overflow: hidden !important;
+  touch-action: none;
 }
 
 a {
@@ -623,6 +632,17 @@ img, svg {
 
 .hero-specs-row .sep {
   opacity: 0.35;
+}
+
+.hero-specs-row span:not(.sep) {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hero-specs-row svg {
+  display: inline-block;
+  flex-shrink: 0;
 }
 
 /* ==========================================================================
@@ -3537,6 +3557,178 @@ img, svg {
 }
 
 /* ==========================================================================
+   Mobile Navigation Drawer (Obsidian & Paper Studio Aesthetic)
+   ========================================================================== */
+
+.mobile-nav-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  visibility: hidden;
+  pointer-events: none;
+  transition: visibility 0.28s ease;
+}
+
+.mobile-nav-drawer.is-open {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.mobile-nav-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.28s ease;
+}
+
+.mobile-nav-drawer.is-open .mobile-nav-backdrop {
+  opacity: 1;
+}
+
+.mobile-nav-panel {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(340px, 86vw);
+  background: var(--bg-card);
+  border-left: 1px solid var(--border-medium);
+  box-shadow: -12px 0 45px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.mobile-nav-drawer.is-open .mobile-nav-panel {
+  transform: translateX(0);
+}
+
+.mobile-nav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 16px;
+}
+
+.mobile-nav-brand {
+  font-size: 1.15rem;
+}
+
+.mobile-menu-close {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-input);
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.mobile-menu-close:hover {
+  color: var(--text-primary);
+  border-color: var(--border-medium);
+}
+
+.mobile-nav-body {
+  flex: 1;
+}
+
+.mobile-nav-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all 0.15s ease;
+}
+
+.mobile-nav-link .nav-num {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--doodle-amber);
+  opacity: 0.8;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:active {
+  color: var(--text-primary);
+  background: var(--bg-card-hover);
+}
+
+.mobile-nav-footer {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobile-download-btn {
+  width: 100%;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-sizing: border-box;
+}
+
+.mobile-nav-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+/* Mobile Table Swipe Hint */
+.mobile-table-hint {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  margin: 0 auto 12px;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--doodle-amber);
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  width: fit-content;
+}
+
+/* ==========================================================================
    Responsive Adaptations
    ========================================================================== */
 
@@ -3562,6 +3754,7 @@ img, svg {
 }
 
 @media (max-width: 768px) {
+  /* Navigation & Header */
   .desktop-nav {
     display: none;
   }
@@ -3571,48 +3764,324 @@ img, svg {
   .nav-download-btn {
     display: none;
   }
+  .site-header .container {
+    padding: 0 16px;
+  }
+
+  /* Global Container Padding */
+  .container {
+    padding: 0 16px;
+  }
+
+  /* Typography */
+  .hero-section {
+    padding: 44px 0 32px;
+  }
+  .hero-title {
+    font-size: clamp(2rem, 7.8vw, 2.75rem);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+  .hero-subtitle {
+    font-size: 0.98rem;
+    line-height: 1.55;
+    margin-bottom: 24px;
+    padding: 0 4px;
+  }
+  .section-title {
+    font-size: clamp(1.7rem, 5.5vw, 2.25rem);
+  }
+  .section-desc {
+    font-size: 0.92rem;
+  }
+  .section {
+    padding: 60px 0;
+  }
+
+  /* Hero CTA Actions */
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto 20px;
+    gap: 10px;
+  }
+  .hero-cta-btn-large {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 18px;
+    box-sizing: border-box;
+  }
+  .terminal-quick-pill {
+    width: 100%;
+    justify-content: space-between;
+    font-size: 0.78rem;
+    padding: 8px 12px;
+    box-sizing: border-box;
+  }
+  .hero-other-platforms {
+    margin-top: -6px;
+    margin-bottom: 20px;
+    font-size: 0.75rem;
+    gap: 6px;
+    padding: 0 8px;
+  }
+  .hero-specs-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 12px;
+    text-align: left;
+    margin: 16px auto 26px;
+    max-width: 320px;
+    font-size: 0.74rem;
+  }
+  .hero-specs-row .sep {
+    display: none;
+  }
+
+  /* Hero Device Preview Chassis */
+  .chassis-header-bar {
+    padding: 8px 12px;
+  }
+  .chassis-title {
+    display: none;
+  }
+  .chassis-telemetry {
+    display: none;
+  }
+  .hero-view-switcher {
+    padding: 2px;
+  }
+  .hero-view-tab {
+    padding: 4px 10px;
+    font-size: 0.72rem;
+  }
   .hero-features-ribbon {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
+
+  /* Napkin AI Scanner */
+  .napkin-slider-container {
+    height: 290px;
+  }
+  .napkin-camera-hud, .vector-hud-badge {
+    padding: 4px 8px;
+    font-size: 0.65rem;
+  }
+  .napkin-camera-hud span:last-child {
+    display: none;
+  }
+  .vector-hud-badge span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+  }
+  .scanner-instruction-bar {
+    flex-direction: column;
+    gap: 6px;
+    text-align: center;
+    font-size: 0.78rem;
+    margin-top: 12px;
+  }
+
+  /* Bento Grid */
   .bento-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
   .bento-span-2 {
     grid-column: span 1;
   }
-  .security-grid {
-    grid-template-columns: 1fr;
-  }
-  .iso-top-dock {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .iso-dock-left, .iso-dock-right, .iso-presets-group {
-    justify-content: center;
-  }
-  .iso-node-details {
-    position: static;
-    width: 100%;
-    margin-top: 10px;
-    border-radius: 0;
-  }
-  .iso-3d-viewport {
-    height: 440px;
-  }
-  .download-layout {
-    grid-template-columns: 1fr;
-  }
-  .pillars-grid {
-    grid-template-columns: 1fr;
-  }
-  .footer-columns {
-    grid-template-columns: 1fr;
+  .bento-card {
+    padding: 20px 16px;
   }
   .shape-preview-stage {
     flex-direction: column;
     align-items: stretch;
   }
+
+  /* 3D Architecture Studio Scrollytelling */
+  .iso-scrolly-section {
+    min-height: 180vh;
+  }
+  .iso-sticky-stage {
+    height: calc(100vh - 68px);
+    overflow: hidden;
+  }
+  .iso-3d-viewport {
+    height: 100%;
+    overflow: hidden;
+  }
+  .iso-floating-island-bar {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    gap: 6px;
+  }
+  .iso-bottom-dock {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .iso-story-scrubber {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 3px 6px;
+  }
+  .iso-story-scrubber::-webkit-scrollbar {
+    display: none;
+  }
+  .iso-tier-chip span {
+    font-size: 0.68rem;
+  }
+  .iso-telemetry-pill,
+  .iso-node-details,
+  .iso-drag-hint,
+  .iso-camera-segment {
+    display: none !important;
+  }
+
+  /* Physics Drafting Desk */
+  .physics-drafting-desk {
+    height: 360px;
+  }
+  #physics-canvas {
+    touch-action: none;
+  }
+  .desk-ruler-top span:nth-child(n+5) {
+    display: none;
+  }
+  .desk-telemetry-hud .telemetry-pill:last-child {
+    display: none;
+  }
+  .physics-controls-bar {
+    gap: 8px;
+  }
+  .physics-btn {
+    padding: 7px 12px;
+    font-size: 0.78rem;
+  }
+
+  /* Comparison Table */
+  .mobile-table-hint {
+    display: inline-flex;
+  }
+  .comparison-wrapper {
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--radius-md);
+  }
+  .compare-table {
+    min-width: 620px;
+  }
+  .compare-table th:first-child,
+  .compare-table td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 3;
+    background: var(--bg-card);
+    box-shadow: 3px 0 8px rgba(0, 0, 0, 0.35);
+  }
+  [data-theme="light"] .compare-table th:first-child,
+  [data-theme="light"] .compare-table td:first-child {
+    background: #ffffff;
+    box-shadow: 3px 0 8px rgba(0, 0, 0, 0.08);
+  }
+  .compare-table th, .compare-table td {
+    padding: 12px 14px;
+    font-size: 0.82rem;
+  }
+
+  /* Security Section */
+  .security-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .provenance-hash-pill code {
+    font-size: 0.72rem;
+  }
+
+  /* Download Section */
+  .download-layout {
+    grid-template-columns: 1fr;
+  }
+  .download-card {
+    padding: 20px 16px;
+  }
+  .terminal-install-bar {
+    max-width: 100%;
+  }
+  .terminal-code-box {
+    font-size: 0.78rem;
+    padding: 8px 12px;
+  }
+
+  /* Pillars & Footer */
+  .pillars-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-columns {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 12px;
+  }
+  .hero-title {
+    font-size: 2.05rem;
+  }
+  .hero-cta-group {
+    max-width: 100%;
+  }
   .hero-specs-row {
+    grid-template-columns: 1fr;
+    text-align: center;
+    max-width: 100%;
+    gap: 6px;
+  }
+  .hero-specs-row span:not(.sep) {
+    justify-content: center;
+  }
+  .chip-long {
+    display: none;
+  }
+  .napkin-slider-container {
+    height: 250px;
+  }
+  .physics-drafting-desk {
+    height: 320px;
+  }
+  .compare-table th, .compare-table td {
+    padding: 10px 10px;
+    font-size: 0.76rem;
+  }
+  .iso-action-btn span {
+    display: none;
+  }
+  .iso-action-btn {
+    padding: 5px 8px;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-title {
+    font-size: 1.85rem;
+  }
+  .hero-badge {
     font-size: 0.74rem;
+    padding: 4px 10px;
+  }
+  .compare-table th, .compare-table td {
+    padding: 8px 8px;
+    font-size: 0.72rem;
   }
 }

@@ -35,6 +35,48 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================================================
+  // Mobile Navigation Drawer Toggle
+  // ==========================================================================
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenuClose = document.getElementById('mobile-menu-close');
+  const mobileNavDrawer = document.getElementById('mobile-nav-drawer');
+  const mobileNavBackdrop = document.getElementById('mobile-nav-backdrop');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-download-btn');
+
+  function openMobileNav() {
+    if (!mobileNavDrawer) return;
+    mobileNavDrawer.classList.add('is-open');
+    mobileNavDrawer.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('mobile-nav-locked');
+    if (window.doodleAudio) window.doodleAudio.playKeyClick();
+  }
+
+  function closeMobileNav() {
+    if (!mobileNavDrawer) return;
+    mobileNavDrawer.classList.remove('is-open');
+    mobileNavDrawer.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('mobile-nav-locked');
+  }
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', openMobileNav);
+  }
+  if (mobileMenuClose) {
+    mobileMenuClose.addEventListener('click', closeMobileNav);
+  }
+  if (mobileNavBackdrop) {
+    mobileNavBackdrop.addEventListener('click', closeMobileNav);
+  }
+  mobileNavLinks.forEach((link) => {
+    link.addEventListener('click', closeMobileNav);
+  });
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileNavDrawer && mobileNavDrawer.classList.contains('is-open')) {
+      closeMobileNav();
+    }
+  });
+
+  // ==========================================================================
   // 2. Terminal Package Manager Command Bar & Copy
   // ==========================================================================
   const pkgCommands = {
@@ -554,18 +596,32 @@ document.addEventListener('DOMContentLoaded', () => {
       pWidth = rect.width;
       pHeight = rect.height;
       pCtx.scale(dpr, dpr);
+
+      // Clamp any bodies outside viewport on resize
+      if (bodies && bodies.length) {
+        bodies.forEach((b, idx) => {
+          const half = b.size / 2;
+          if (b.x + half > pWidth - 10) {
+            b.x = Math.max(half + 10, (pWidth / (bodies.length + 1)) * (idx + 1));
+            b.vx = 0;
+          }
+        });
+      }
     }
+
+    const isMobileScreen = window.innerWidth <= 600;
+    const initialWidth = physicsCanvas.getBoundingClientRect().width || (isMobileScreen ? 340 : 800);
+
+    let bodies = [
+      { type: 'triangle', x: initialWidth * 0.15, y: 70, vx: -0.2, vy: 0, size: isMobileScreen ? 32 : 40, color: '#f59e0b', label: 'Triangle' },
+      { type: 'star', x: initialWidth * 0.35, y: 50, vx: 0.1, vy: 1, size: isMobileScreen ? 34 : 42, color: '#f43f5e', label: isMobileScreen ? 'Star' : 'Star (5-pt)' },
+      { type: 'cylinder', x: initialWidth * 0.55, y: 40, vx: -0.1, vy: 2, size: isMobileScreen ? 36 : 46, color: '#06b6d4', label: isMobileScreen ? 'Postgres' : 'PostgreSQL' },
+      { type: 'hexagon', x: initialWidth * 0.75, y: 70, vx: 0.2, vy: 0, size: isMobileScreen ? 32 : 40, color: '#10b981', label: 'Hexagon' },
+      { type: 'box', x: initialWidth * 0.88, y: 60, vx: -0.1, vy: -1, size: isMobileScreen ? 34 : 44, color: '#a855f7', label: isMobileScreen ? 'Gateway' : 'API Gateway' },
+    ];
 
     resizePhysicsCanvas();
     window.addEventListener('resize', resizePhysicsCanvas);
-
-    let bodies = [
-      { type: 'triangle', x: 130, y: 70, vx: -0.2, vy: 0, size: 40, color: '#f59e0b', label: 'Triangle' },
-      { type: 'star', x: 310, y: 50, vx: 0.1, vy: 1, size: 42, color: '#f43f5e', label: 'Star (5-pt)' },
-      { type: 'cylinder', x: 490, y: 40, vx: -0.1, vy: 2, size: 46, color: '#06b6d4', label: 'PostgreSQL' },
-      { type: 'hexagon', x: 670, y: 70, vx: 0.2, vy: 0, size: 40, color: '#10b981', label: 'Hexagon' },
-      { type: 'box', x: 850, y: 60, vx: -0.1, vy: -1, size: 44, color: '#a855f7', label: 'API Gateway' },
-    ];
 
     let draggedBody = null;
     let dragOffsetX = 0;

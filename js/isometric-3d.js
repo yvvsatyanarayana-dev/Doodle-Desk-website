@@ -288,6 +288,11 @@
 
       this.dragStart = { x: 0, y: 0, pitch: 55, yaw: 30 };
       this.selectedNodeId = 'node-desktop';
+      this.needsForceRender = true;
+
+      window.addEventListener('resize', () => {
+        this.needsForceRender = true;
+      });
 
       this.lastRenderedPitch = -999;
       this.lastRenderedYaw = -999;
@@ -543,6 +548,16 @@
       this.setRevealedLayerCount(clamped);
     }
 
+    getResponsiveScale() {
+      const w = window.innerWidth;
+      if (w <= 360) return 0.38;
+      if (w <= 420) return 0.44;
+      if (w <= 640) return 0.52;
+      if (w <= 768) return 0.62;
+      if (w <= 1024) return 0.80;
+      return 1.0;
+    }
+
     startLoop() {
       const tick = () => {
         // Auto-Rotate handling
@@ -566,12 +581,17 @@
           this.currentPitch += deltaPitch * 0.22;
         }
 
-        // Only commit to DOM if moved beyond threshold
+        // Only commit to DOM if moved beyond threshold or force render
         if (
           Math.abs(this.currentPitch - this.lastRenderedPitch) > 0.04 ||
-          Math.abs(this.currentYaw - this.lastRenderedYaw) > 0.04
+          Math.abs(this.currentYaw - this.lastRenderedYaw) > 0.04 ||
+          this.needsForceRender
         ) {
-          this.stage.style.transform = `translateY(40px) rotateX(${this.currentPitch.toFixed(2)}deg) rotateZ(${this.currentYaw.toFixed(2)}deg)`;
+          this.needsForceRender = false;
+          const scale = this.getResponsiveScale();
+          const scaleStr = scale < 1.0 ? ` scale(${scale})` : '';
+          const yOffset = window.innerWidth <= 768 ? '10px' : '40px';
+          this.stage.style.transform = `translateY(${yOffset}) rotateX(${this.currentPitch.toFixed(2)}deg) rotateZ(${this.currentYaw.toFixed(2)}deg)${scaleStr}`;
           this.lastRenderedPitch = this.currentPitch;
           this.lastRenderedYaw = this.currentYaw;
 
